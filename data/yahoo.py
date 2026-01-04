@@ -3,7 +3,6 @@ import argparse
 from datetime import date, datetime
 from enum import IntEnum
 import os
-import time
 
 YYYY_MM_DD_FORMAT = '%Y-%m-%d'
 YYYYMMDD_FORMAT = '%Y%m%d'
@@ -12,12 +11,12 @@ YYYYMMDD_FORMAT = '%Y%m%d'
 SCRIPT_DESCRIPTION = '''
 Download Yahoo Finance historical data for Equity (common-stocks/ETFs)
 It supports running against multiple tickers for a given as-of date (run date)
-and stores each ticker in a <ticker>-<as-of-date>-<epoch-millis>.csv format
+and stores each ticker in a <ticker>-<as-of-date>-<epoch-time>.csv format
 at a storage area.
 
 In general, ETF and common stock tickers can be stored at the same location. 
 If one ticker is generated multiple times on the same day, newer runs would 
-have a newer <epoch-millis> timestamp
+have a newer <epoch-time> timestamp
 '''
 
 
@@ -111,7 +110,7 @@ def get_cli_parser():
     parser.add_argument(
         '--output-path',
         required=True,
-        help='output file storage path, each ticker in <as-of-date>/<ticker>-<as-of-date>-<epoch-millis>.csv'
+        help='output file storage path, each ticker in <as-of-date>/<ticker>-<as-of-date>-<epoch-time>.csv'
     )
     parser.add_argument(
         '--as-of-date',
@@ -170,7 +169,7 @@ def run() -> ReturnCode:
     # make sure the ticker subdirectory exists
     os.makedirs(as_of_date_output_path, exist_ok=True)
 
-    timestamp = time.time()
+    timestamp = int(datetime.now().timestamp())
     for ticker, df in ret.items():
         # output_path is already validated
         save_to_csv_files(as_of_date_output_path, as_of_date, ticker, df, timestamp)
