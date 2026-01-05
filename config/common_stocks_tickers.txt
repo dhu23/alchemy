@@ -1,0 +1,24 @@
+AAPL # Technology
+MSFT # Technology
+GOOGL # Technology
+META # Technology
+NVDA # Technology
+
+JPM # Financials
+GS # Financials
+
+XOM # Exxon Mobil Corporation, Energy
+CVX # Chevron Corporation, Energy
+
+JNJ # Healthcare
+UNH # Healthcare
+
+CAT # Industrials
+GE # Industrials
+
+PG # Consumer Staples
+KO # Consumer Staples
+
+MCD # Consumer Discretionary
+SBUX # Consumer Discretionary
+AMZN # Consumer Discretionary
