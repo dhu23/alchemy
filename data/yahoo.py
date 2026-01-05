@@ -105,7 +105,7 @@ def get_cli_parser():
         '--end-date',
         type=from_YYYY_MM_DD,
         required=True,
-        help='end date in yyyy-mm-dd format',
+        help='end date in yyyy-mm-dd format (exclusive)',
     )
     parser.add_argument(
         '--output-path',
