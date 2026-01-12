@@ -11,6 +11,7 @@ IWB # iShares Russell 1000 ETF
 GLD # SPDR Gold Shares
 SLV # iShares Silver Trust
 GDX # VanEck Gold Miners ETF 
+GLDM # SPDR Gold MiniShares
 
 # Rates & macro
 # Equity-bond correlation flips matter

@@ -88,7 +88,7 @@ def read_tickers_from_file(ticker_file_path: str) -> list[str]:
 
 
 def save_to_csv_files(output_path: str, as_of_date: str, ticker: str, df, timestamp: int):
-    file_path = os.path.join(output_path, f'{ticker}-{as_of_date}-{timestamp}.csv')
+    file_path = os.path.join(output_path, f'{ticker}.csv')
     print(f'writing data for {ticker} to {file_path}')
     df.to_csv(file_path)
 
