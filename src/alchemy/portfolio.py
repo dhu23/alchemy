@@ -3,13 +3,34 @@ import numpy as np
 from typing import NamedTuple
 
 
-class AssetRiskReturn(NamedTuple):
-    prices: pd.DataFrame
-    log_returns: pd.DataFrame
-    daily_return: pd.Series
-    daily_vol: pd.Series
-    annual_return: pd.Series
-    anual_vol: pd.Series
+class AssetTimeSeries(NamedTuple):
+    # both fields contain one column per asset, with time index
+    prices: pd.DataFrame # historical prices
+    log_returns: pd.DataFrame # historical log returns
+
+
+class AssetMetrics(NamedTuple):
+    daily_return: pd.Series # one value per asset
+    daily_vol: pd.Series # same shape
+    annual_return: pd.Series # same shape
+    annual_vol: pd.Series # same shape
+
+
+class AssetRiskProfile(NamedTuple):
+    time_series: AssetTimeSeries
+    metrics: AssetMetrics
+
+
+class PortofolioTimeSeries(NamedTuple):
+    prices: pd.Series # 
+
+
+
+class PortfolioRiskReturn(NamedTuple):
+    daily_return: int | float
+    daily_vol: int | float
+    annual_return: int | float
+    annual_vol: int | float
 
 
 def get_asset_risk_return(
@@ -57,13 +78,20 @@ def get_asset_risk_return(
 def get_portfolio_risk_return(
         asset_risk_return: AssetRiskReturn, 
         weights: np.ndarray
-) -> AssetRiskReturn:
+) -> PortfolioRiskReturn:
     '''
     Given individual asset risk/return profile, and weights for each asset,
     this function computes the portfolio level risk/return profile
     
     The portfolio characteristics are described in a MATLAB style language:
-    Let normalized weights be a column vector w, and 
+    Let normalized weights be a column vector w;
+    Let covariance matrix of the lognormally (in theory) distributted ∑
+    
+    If daily return across different assets are r as a column vector,
+    then the daily return of the portfolio is r_p = w * r (linear combination)
+
+    Then the variance is Var(r_p) = Var(w * r) = w' * ∑ * w 
+    by variance of a linear combination
 
     :param asset_risk_return: Description
     :type asset_risk_return: AssetRiskReturn
@@ -73,4 +101,6 @@ def get_portfolio_risk_return(
     :rtype: AssetRiskReturn
     '''
     normalized_weights = weights / np.sum(weights)
+
+    
 
