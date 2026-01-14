@@ -7,6 +7,8 @@ IWV # iShares Russell 3000 ETF
 IWM # iShares Russell 2000 ETF
 IWB # iShares Russell 1000 ETF
 
+VTI # Vanguard Total Stock Market Index Fund ETF Shares
+
 # Commodities
 GLD # SPDR Gold Shares
 SLV # iShares Silver Trust
