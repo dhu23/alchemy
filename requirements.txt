@@ -211,8 +211,10 @@ numpy==2.4.0
     #   contourpy
     #   matplotlib
     #   pandas
+    #   patsy
     #   scipy
     #   seaborn
+    #   statsmodels
     #   yfinance
 packaging==25.0
     # via
@@ -224,15 +226,19 @@ packaging==25.0
     #   matplotlib
     #   nbconvert
     #   pytest
+    #   statsmodels
 pandas==2.3.3
     # via
     #   -r requirements.in
     #   seaborn
+    #   statsmodels
     #   yfinance
 pandocfilters==1.5.1
     # via nbconvert
 parso==0.8.5
     # via jedi
+patsy==1.0.2
+    # via statsmodels
 peewee==3.18.3
     # via yfinance
 pexpect==4.9.0
@@ -318,7 +324,9 @@ rpds-py==0.30.0
     #   jsonschema
     #   referencing
 scipy==1.16.3
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   statsmodels
 seaborn==0.13.2
     # via -r requirements.in
 send2trash==2.0.0
@@ -331,6 +339,8 @@ soupsieve==2.8.1
     # via beautifulsoup4
 stack-data==0.6.3
     # via ipython
+statsmodels==0.14.6
+    # via -r requirements.in
 terminado==0.18.1
     # via
     #   jupyter-server
